@@ -24,7 +24,7 @@ RUN cd /tmp && \
     aws s3 cp s3://qdeploy/applications/spark/${APACHE_SPARK_VERSION}/spark-${APACHE_SPARK_VERSION}-without-hadoop-with-hive.tgz . && \
     tar xzf spark-${APACHE_SPARK_VERSION}-without-hadoop-with-hive.tgz -C /opt/ && \
     rm spark-${APACHE_SPARK_VERSION}-without-hadoop-with-hive.tgz
-RUN cd /opt/ && ln -s spark-2.2.0-without-hadoop-with-hive spark
+RUN cd /opt/ && ln -s spark-2.2.0-bin-spark-2.2.0-without-hadoop-with-hive spark
 
 COPY spark-defaults.conf /opt/spark/conf/
 COPY spark-env.sh /opt/spark/conf/
