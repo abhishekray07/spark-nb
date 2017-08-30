@@ -21,7 +21,7 @@ RUN cd /opt/ && ln -s hadoop-${HADOOP_VERSION} hadoop
 
 # Install Spark
 RUN cd /tmp && \
-    aws s3 cp s3://q.app/installs/spark-${APACHE_SPARK_VERSION}-without-hadoop-with-hive.tgz . && \
+    /usr/bin/aws s3 cp s3://q.app/installs/spark-${APACHE_SPARK_VERSION}-without-hadoop-with-hive.tgz . && \
     tar xzf spark-${APACHE_SPARK_VERSION}-without-hadoop-with-hive.tgz -C /opt/ && \
     rm spark-${APACHE_SPARK_VERSION}-without-hadoop-with-hive.tgz
 RUN cd /opt/ && ln -s spark-2.2.0-without-hadoop-with-hive spark
@@ -33,7 +33,7 @@ COPY spark-env.sh /opt/spark/conf/
 RUN cd /opt/spark/jars && \
     wget -q http://central.maven.org/maven2/org/apache/hadoop/hadoop-aws/2.8.0/hadoop-aws-2.8.0.jar && \
     wget -q http://central.maven.org/maven2/com/amazonaws/aws-java-sdk-bundle/1.11.128/aws-java-sdk-bundle-1.11.128.jar && \
-    aws s3 cp s3://q.app/installs/hadoop-2.8.0-lzo-0.4.21-SNAPSHOT.jar .
+    /usr/bin/aws s3 cp s3://q.app/installs/hadoop-2.8.0-lzo-0.4.21-SNAPSHOT.jar .
 
 # Spark config
 ENV SPARK_HOME /opt/spark
